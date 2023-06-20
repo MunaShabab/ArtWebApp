@@ -1,0 +1,45 @@
+﻿@page
+@model ArtWebApp.Pages.ShowPaintings.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ShowPainting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ShowPainting.ShowPaintingID" />
+            <div class="form-group">
+                <label asp-for="ShowPainting.PaintingID" class="control-label"></label>
+                <select asp-for="ShowPainting.PaintingID" class="form-control" asp-items="ViewBag.PaintingID"></select>
+                <span asp-validation-for="ShowPainting.PaintingID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowPainting.ShowID" class="control-label"></label>
+                <select asp-for="ShowPainting.ShowID" class="form-control" asp-items="ViewBag.ShowID"></select>
+                <span asp-validation-for="ShowPainting.ShowID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowPainting.Award" class="control-label"></label>
+                <input asp-for="ShowPainting.Award" class="form-control" />
+                <span asp-validation-for="ShowPainting.Award" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

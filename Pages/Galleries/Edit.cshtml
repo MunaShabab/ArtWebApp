@@ -1,0 +1,70 @@
+﻿@page
+@model ArtWebApp.Pages.Galleries.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Gallery</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Gallery.GalleryID" />
+            <div class="form-group">
+                <label asp-for="Gallery.GalleryName" class="control-label"></label>
+                <input asp-for="Gallery.GalleryName" class="form-control" />
+                <span asp-validation-for="Gallery.GalleryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gallery.Street" class="control-label"></label>
+                <input asp-for="Gallery.Street" class="form-control" />
+                <span asp-validation-for="Gallery.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gallery.City" class="control-label"></label>
+                <input asp-for="Gallery.City" class="form-control" />
+                <span asp-validation-for="Gallery.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gallery.State" class="control-label"></label>
+                <input asp-for="Gallery.State" class="form-control" />
+                <span asp-validation-for="Gallery.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gallery.ZipCode" class="control-label"></label>
+                <input asp-for="Gallery.ZipCode" class="form-control" />
+                <span asp-validation-for="Gallery.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gallery.Email" class="control-label"></label>
+                <input asp-for="Gallery.Email" class="form-control" />
+                <span asp-validation-for="Gallery.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gallery.ContactPerson" class="control-label"></label>
+                <input asp-for="Gallery.ContactPerson" class="form-control" />
+                <span asp-validation-for="Gallery.ContactPerson" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gallery.CommissionRate" class="control-label"></label>
+                <input asp-for="Gallery.CommissionRate" class="form-control" />
+                <span asp-validation-for="Gallery.CommissionRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

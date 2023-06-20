@@ -1,0 +1,60 @@
+﻿@page
+@model ArtWebApp.Pages.Paintings.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Painting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Painting.PaintingID" />
+            <div class="form-group">
+                <label asp-for="Painting.Category" class="control-label"></label>
+                <input asp-for="Painting.Category" class="form-control" />
+                <span asp-validation-for="Painting.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Painting.Height" class="control-label"></label>
+                <input asp-for="Painting.Height" class="form-control" />
+                <span asp-validation-for="Painting.Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Painting.Width" class="control-label"></label>
+                <input asp-for="Painting.Width" class="form-control" />
+                <span asp-validation-for="Painting.Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Painting.Year" class="control-label"></label>
+                <input asp-for="Painting.Year" class="form-control" />
+                <span asp-validation-for="Painting.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Painting.Availability" class="control-label"></label>
+                <input asp-for="Painting.Availability" class="form-control" />
+                <span asp-validation-for="Painting.Availability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Painting.ImageURL" class="control-label"></label>
+                <input asp-for="Painting.ImageURL" class="form-control" />
+                <span asp-validation-for="Painting.ImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

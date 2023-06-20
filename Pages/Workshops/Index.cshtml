@@ -1,0 +1,54 @@
+﻿@page
+@model ArtWebApp.Pages.Workshops.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Workshop[0].WorkshopTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Workshop[0].GalleryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Workshop[0].WorkshopDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Workshop[0].NumberOfStudents)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Workshop) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GalleryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfStudents)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.WorkshopID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.WorkshopID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.WorkshopID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿@page
+@model ArtWebApp.Pages.ShowPaintings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowPainting[0].Award)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowPainting[0].Painting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowPainting[0].Show)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ShowPainting) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Award)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Painting.PaintingID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Show.ShowTitle)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ShowPaintingID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ShowPaintingID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ShowPaintingID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

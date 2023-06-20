@@ -1,0 +1,50 @@
+﻿@page
+@model ArtWebApp.Pages.Workshops.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Workshop</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Workshop.WorkshopID" />
+            <div class="form-group">
+                <label asp-for="Workshop.WorkshopTitle" class="control-label"></label>
+                <input asp-for="Workshop.WorkshopTitle" class="form-control" />
+                <span asp-validation-for="Workshop.WorkshopTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Workshop.GalleryID" class="control-label"></label>
+                <input asp-for="Workshop.GalleryID" class="form-control" />
+                <span asp-validation-for="Workshop.GalleryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Workshop.WorkshopDate" class="control-label"></label>
+                <input asp-for="Workshop.WorkshopDate" class="form-control" />
+                <span asp-validation-for="Workshop.WorkshopDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Workshop.NumberOfStudents" class="control-label"></label>
+                <input asp-for="Workshop.NumberOfStudents" class="form-control" />
+                <span asp-validation-for="Workshop.NumberOfStudents" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

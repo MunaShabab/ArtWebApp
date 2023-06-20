@@ -1,0 +1,46 @@
+﻿@page
+@model ArtWebApp.Pages.Paintings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <section>
+    <p>
+        Painting Title: <input type="text" asp-for="TitleString" />
+        Category: <input type="text" asp-for="CategoryString" />
+        <input type="submit" value="Find" />
+    </p>
+    </section>
+</form>
+
+<section class="Portfolio">
+
+    @foreach (var item in Model.Painting)
+    {
+        <section class="thumbnail-holder">
+            <h3 class="thumbnail-title">@Html.DisplayFor(modelItem => item.PaintingID)</h3>
+            <div class="image_container">
+                <a asp-page="./Details" asp-route-id="@item.PaintingID">
+                    <img id="myImg" src="~/img/T_@Html.DisplayFor(modelItem=> item.ImageURL)" alt="@Html.DisplayFor(modelItem => item.PaintingID)">
+
+                    <div class="work-detail">
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Category) .@Html.DisplayFor(modelItem => item.Height)" X @Html.DisplayFor(modelItem => item.Width)" . @Html.DisplayFor(modelItem => item.Availability)
+                        </p>
+                    </div>
+                </a>
+                <a asp-page="./Edit" asp-route-id="@item.PaintingID">Edit</a>
+                <a asp-page="./Delete" asp-route-id="@item.PaintingID">Delete</a>
+            </div>
+        </section>
+    }
+</section>
+

@@ -1,0 +1,162 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 7em;
+}
+
+body {
+    font-family: helvetica, arial, sans-serif;
+    background: black;
+    background-image: url(../img/TheOtherSide.JPG);
+    background-attachment: fixed;
+    text-align: center;
+    line-height: 1.2em;
+    color: cornsilk;
+}
+
+
+header {
+    
+    background-image: radial-gradient(rgba(0,0,0,.1),rgba(0,0,0,.75));
+    width: 98%;
+    margin: 0 auto .5% auto;
+    padding: 1%;
+    border-radius: .5em;
+}
+
+h1 {
+    font: 600 4em/1.1 'Bilbo', Helvetica, cursive;
+    color: black;
+    letter-spacing: .6em;
+}
+
+h2 {
+    font: 400 2.5em/1.1 'Bilbo', Helvetica, cursive;
+    color: white;
+    letter-spacing: .3em;
+    background: rgba(0,0,0,.5);
+    margin: 0% auto;
+    padding: 1%;
+    border-radius: .4em;
+    box-shadow: .1em .1em .2em black;
+}
+
+nav {
+    background: black;
+    width: 90%;
+    margin: 0% auto;
+    padding: 1%;
+    border-radius: .4em;
+}
+
+    nav ul {
+        list-style-type: none;
+    }
+
+    nav li {
+        display: inline;
+        margin: 1%;
+        padding: 3%;
+    }
+
+    nav a {
+        color: white;
+        font-size: 1em;
+        text-decoration: none;
+    }
+section {
+    background: rgba(0,0,0,.5);
+    margin: 0% auto;
+    padding: 1%;
+    border-radius: .4em;
+    box-shadow: .1em .1em .2em black;
+    text-align:center;
+}
+
+.Portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(0,0,0,.5);
+    margin: 0% auto;
+    padding: 1%;
+    border-radius: .4em;
+    box-shadow: .1em .1em .2em black;
+}
+
+.thumbnail-holder {
+    width: 30%;
+    color: floralwhite;
+}
+
+    .thumbnail-holder a {
+        text-decoration: none;
+    }
+
+.thumbnail-title {
+    color: cornsilk;
+}
+
+.work-detail {
+    color: cornsilk;
+}
+
+    .work-detail ul {
+        list-style-type: none;
+    }
+
+main img {
+    padding: 1.7%;
+    margin: 1%;
+    width: 55%;
+    border: .05em solid rgba(0,0,0,1);
+    border-radius: .4em;
+    background: rgba(255,255,255,.9);
+    box-shadow: .1em .1em .2em black;
+}
+
+footer {
+    background: black;
+    width: 90%;
+    margin: 1.3em auto;
+    padding: 1%;
+    color: white;
+}
+
+body a {
+    color: cornsilk;
+}
+
+dl, table {
+    background: rgba(0,0,0,.5);
+    margin: 0% auto;
+    padding: 1%;
+    border-radius: .4em;
+    box-shadow: .1em .1em .2em black;
+}
+
+th, td {
+    color: cornsilk;
+}
+
+.thankYou, .col-md-4 {
+    background: rgba(0,0,0,.5);
+    margin: 0% auto;
+    padding: 1%;
+    border-radius: .4em;
+    box-shadow: .1em .1em .2em black;
+}
