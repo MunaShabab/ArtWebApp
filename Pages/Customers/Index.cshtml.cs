@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.Customers
 {
-    [Authorize]
+    [Authorize (Roles = "Admin, Manager")]
     public class IndexModel : PageModel
     {
         

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.Shows
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Manager")]
     public class EditModel : GalleryNamePageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;

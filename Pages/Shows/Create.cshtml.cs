@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.Shows
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Manager")]
     public class CreateModel : GalleryNamePageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;

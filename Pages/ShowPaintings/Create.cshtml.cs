@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ArtWebApp.Data;
 using ArtWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.ShowPaintings
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class CreateModel : PageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ArtWebApp.Data;
 using ArtWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.Customers
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class DetailsModel : PageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;

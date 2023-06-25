@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ArtWebApp.Data;
 using ArtWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.Workshops
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class CreateModel : GalleryNamePageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;
@@ -21,6 +23,7 @@ namespace ArtWebApp.Pages.Workshops
 
         public IActionResult OnGet()
         {
+            PopulateGalleryDropDownList(_context);
             return Page();
         }
 
@@ -31,15 +34,21 @@ namespace ArtWebApp.Pages.Workshops
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Workshop == null || Workshop == null)
+            var emptyWorkshop = new Workshop();
+
+            if (await TryUpdateModelAsync<Workshop>(
+                 emptyWorkshop,
+                 "workshop",   // Prefix for form value.
+                 w => w.WorkshopID, w => w.WorkshopTitle, w => w.GalleryID, w => w.WorkshopDate, w => w.NumberOfStudents))
             {
-                return Page();
+                _context.Workshop.Add(emptyWorkshop);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Workshop.Add(Workshop);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            // Select DepartmentID if TryUpdateModelAsync fails.
+            PopulateGalleryDropDownList(_context, emptyWorkshop.GalleryID);
+            return Page();
         }
     }
 }
