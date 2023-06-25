@@ -20,7 +20,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Workshop.GalleryID" class="control-label"></label>
-                <input asp-for="Workshop.GalleryID" class="form-control" />
+                <select asp-for="Workshop.GalleryID" class="form-control"
+                        asp-items="@Model.GalleryNameSL">
+                    <option value="">-- Select Gallery --</option>
+                </select>
                 <span asp-validation-for="Workshop.GalleryID" class="text-danger"></span>
             </div>
             <div class="form-group">

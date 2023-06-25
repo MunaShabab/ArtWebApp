@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.Paintings
 {
-    [Authorize]
+    [Authorize(Roles="Manager")]
     public class DeleteModel : PageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;

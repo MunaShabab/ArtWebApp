@@ -10,7 +10,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+	.AddRoles<IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 
@@ -67,5 +68,50 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+using (var scope= app.Services.CreateScope())
+{
+	var roleManager= scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+	var roles = new[] { "Admin", "Manager", "Member" };
+	foreach (var role in roles)
+	{
+		if(!await roleManager.RoleExistsAsync(role))
+		{
+			await roleManager.CreateAsync(new IdentityRole(role));
+		}
+
+	}
+}
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+	string email = "admin@admin.com";
+	string password = "Passw0rd!";
+	if (await userManager.FindByEmailAsync(email) == null)
+	{
+		//create a user
+		var user = new IdentityUser();
+		user.UserName = email;
+		user.Email = email;
+		
+		await userManager.CreateAsync (user, password);
+		//assign the user a role
+		await userManager.AddToRoleAsync(user, "Admin");
+
+	}
+	string munaEmail = "muna.shabab@gmail.com";
+	string munaPassword = "Pa$$w0rd";
+	if(await userManager.FindByEmailAsync(munaEmail) == null)
+	{
+		var userMuna = new IdentityUser();
+		userMuna.UserName = munaEmail;
+		userMuna.Email = munaPassword;
+
+		await userManager.CreateAsync(userMuna, munaPassword);
+
+		await userManager.AddToRoleAsync(userMuna, "Manager");
+
+	}
+	
+}
 
 app.Run();

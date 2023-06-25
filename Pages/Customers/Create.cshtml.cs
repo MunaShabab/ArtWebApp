@@ -37,6 +37,7 @@ namespace ArtWebApp.Pages.Customers
             }
 
             _context.Customer.Add(Customer);
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

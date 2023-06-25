@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArtWebApp.Data;
 using ArtWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.Workshops
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class EditModel : PageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;
