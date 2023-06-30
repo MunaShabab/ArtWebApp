@@ -36,11 +36,11 @@ namespace ArtWebApp.Models
 		[Required]
 		[StringLength(40)]
 		public string Email { get; set; }
-
-		[StringLength(75, MinimumLength = 5)]
+        [Display(Name = "Contact Person")]
+        [StringLength(75, MinimumLength = 5)]
 		public string ContactPerson { get; set; }
-
-		[Column(TypeName = "decimal(4, 2)")]
+        [Display(Name = "Commission Rate")]
+        [Column(TypeName = "decimal(4, 2)")]
 		public decimal CommissionRate { get; set; }
 
 		public ICollection<Workshop>? Workshops { get; set; }

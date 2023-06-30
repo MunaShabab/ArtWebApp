@@ -21,7 +21,7 @@ namespace ArtWebApp.Pages.WorkshopRegisterations
 
         public IActionResult OnGet()
         {
-        ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "City");
+        ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "LastName");
         ViewData["WorkshopID"] = new SelectList(_context.Set<Workshop>(), "WorkshopID", "WorkshopTitle");
             return Page();
         }

@@ -18,5 +18,7 @@ namespace ArtWebApp.Data
 		public DbSet<ArtWebApp.Models.ShowPainting>? ShowPainting { get; set; }
 		public DbSet<ArtWebApp.Models.Painting>? Painting { get; set; }
 		public DbSet<ArtWebApp.Models.Product>? Product { get; set; }
-	}
+
+       
+    }
 }

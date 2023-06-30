@@ -10,8 +10,8 @@ namespace ArtWebApp.Models
 		[Required]
 		public int WorkshopID { get; set; }
 
-		public Customer Customer { get; set; }
+		public Customer? Customer { get; set; }
 
-		public Workshop Workshop { get; set; }
+		public Workshop? Workshop { get; set; }
 	}
 }

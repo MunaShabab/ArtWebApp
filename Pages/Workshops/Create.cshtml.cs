@@ -31,7 +31,7 @@ namespace ArtWebApp.Pages.Workshops
         public Workshop Workshop { get; set; } = default!;
         
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+       
         public async Task<IActionResult> OnPostAsync()
         {
             var emptyWorkshop = new Workshop();
@@ -39,14 +39,14 @@ namespace ArtWebApp.Pages.Workshops
             if (await TryUpdateModelAsync<Workshop>(
                  emptyWorkshop,
                  "workshop",   // Prefix for form value.
-                 w => w.WorkshopID, w => w.WorkshopTitle, w => w.GalleryID, w => w.WorkshopDate, w => w.NumberOfStudents))
+                w => w.WorkshopID, w => w.WorkshopTitle, w => w.GalleryID, w => w.WorkshopDate, w => w.NumberOfStudents))
             {
                 _context.Workshop.Add(emptyWorkshop);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
 
-            // Select DepartmentID if TryUpdateModelAsync fails.
+            
             PopulateGalleryDropDownList(_context, emptyWorkshop.GalleryID);
             return Page();
         }

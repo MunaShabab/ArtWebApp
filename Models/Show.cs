@@ -5,7 +5,7 @@ namespace ArtWebApp.Models
 {
 	public class Show
 	{
-		[ScaffoldColumn(false)]
+		
 		public int ShowID { get; set; }
 
 		[Display(Name = "Show Title")]
