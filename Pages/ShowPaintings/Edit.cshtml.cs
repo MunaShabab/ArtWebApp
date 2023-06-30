@@ -8,11 +8,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArtWebApp.Data;
 using ArtWebApp.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ArtWebApp.Pages.ShowPaintings
 {
-    [Authorize(Roles = "Admin, Manager")]
     public class EditModel : PageModel
     {
         private readonly ArtWebApp.Data.ApplicationDbContext _context;
@@ -38,7 +36,7 @@ namespace ArtWebApp.Pages.ShowPaintings
                 return NotFound();
             }
             ShowPainting = showpainting;
-           ViewData["PaintingID"] = new SelectList(_context.Set<Painting>(), "PaintingID", "PaintingID");
+           ViewData["PaintingID"] = new SelectList(_context.Painting, "PaintingID", "PaintingID");
            ViewData["ShowID"] = new SelectList(_context.Show, "ShowID", "ShowTitle");
             return Page();
         }

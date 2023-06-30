@@ -4,7 +4,7 @@ namespace ArtWebApp.Models
 {
 	public class Workshop
 	{
-		[ScaffoldColumn(false)]
+		
 		public int WorkshopID { get; set; }
 
 		[Display(Name = "Workshop Title")]
@@ -22,9 +22,7 @@ namespace ArtWebApp.Models
 		[Required]
 		[Range(0, 18, ErrorMessage = "The value must be between 0 and 18")]
 		public int NumberOfStudents { get; set; }
-		[Required]
-
-
+	
 		public ICollection<WorkshopRegisteration>? WorkshopRegisterations { get; set; }
 		public virtual Product? Product { get; set; }
 	}

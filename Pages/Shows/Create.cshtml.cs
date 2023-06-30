@@ -45,7 +45,7 @@ namespace ArtWebApp.Pages.Shows
                 return RedirectToPage("./Index");
             }
 
-            // Select DepartmentID if TryUpdateModelAsync fails.
+            
             PopulateGalleryDropDownList(_context, emptyShow.GalleryID);
             return Page();
         }

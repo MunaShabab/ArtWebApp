@@ -5,7 +5,7 @@ namespace ArtWebApp.Models
 	
 	public class ShowPainting
 	{
-		[ScaffoldColumn(false)]
+		
 		public int ShowPaintingID { get; set; }
 		[Display(Name = "Painting Title")]
 		[StringLength(80, MinimumLength = 3)]
@@ -14,10 +14,11 @@ namespace ArtWebApp.Models
 		[Required]
 		public int ShowID { get; set; }
 
+		[Required]
 
-		public string Award { get; set; }
+        public string Award { get; set; }
 
-		public Painting Painting { get; set; }
-		public Show Show { get; set; }
+		public Painting? Painting { get; set; }
+		public Show? Show { get; set; }
 	}
 }
