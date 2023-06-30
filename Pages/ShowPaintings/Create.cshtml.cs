@@ -32,24 +32,19 @@ namespace ArtWebApp.Pages.ShowPaintings
 
         [BindProperty]
         public ShowPainting ShowPainting { get; set; } = default!;
-        
 
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
-            var emptyShowPainting = new ShowPainting();
-
-            if (await TryUpdateModelAsync<ShowPainting>(
-                 emptyShowPainting,
-                 "showPainting",   // Prefix for form value.
-                s => s.ShowPaintingID, s => s.PaintingID, s => s.ShowID, s => s.Award))
-            {  _context.ShowPainting.Add(emptyShowPainting);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+            if (!ModelState.IsValid || _context.ShowPainting == null || ShowPainting == null)
+            {
+                return Page();
             }
 
+            _context.ShowPainting.Add(ShowPainting);
+            await _context.SaveChangesAsync();
 
-            return Page();
+            return RedirectToPage("./Index");
         }
     }
 }

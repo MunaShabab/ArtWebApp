@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArtWebApp.Models
 {
@@ -8,10 +9,11 @@ namespace ArtWebApp.Models
 		
 		public int ShowPaintingID { get; set; }
 		[Display(Name = "Painting Title")]
-		[StringLength(80, MinimumLength = 3)]
+        [ForeignKey("PainingID")]
 		[Required]
 		public string PaintingID { get; set; }
-		[Required]
+        [ForeignKey("ShowID")]
+        [Required]
 		public int ShowID { get; set; }
 
 		[Required]
