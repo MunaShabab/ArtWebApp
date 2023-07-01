@@ -20,12 +20,28 @@ namespace ArtWebApp.Pages.Workshops
         }
 
         public IList<Workshop> Workshop { get;set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
 
         public async Task OnGetAsync()
         {
+
             if (_context.Workshop != null)
             {
-                Workshop = await _context.Workshop.ToListAsync();
+                var workshops = from w in _context.Workshop
+                                select w;
+                var galleries = from g in _context.Gallery
+                                select g;
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    galleries = galleries.Where(s => s.City.Contains(SearchString));
+                    foreach (var gallery in galleries)
+                    {
+                        workshops = workshops.Where(s => s.GalleryID.Equals(gallery.GalleryID));
+                    }
+                }  
+                
+                Workshop = await workshops.ToListAsync();
             }
         }
     }

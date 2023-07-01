@@ -15,10 +15,8 @@ namespace ArtWebApp.Models
         [ForeignKey("ShowID")]
         [Required]
 		public int ShowID { get; set; }
-
-		[Required]
-
-        public string Award { get; set; }
+        [DisplayFormat(NullDisplayText = "No award")]
+        public string? Award { get; set; }
 
 		public Painting? Painting { get; set; }
 		public Show? Show { get; set; }

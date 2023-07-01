@@ -29,6 +29,26 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Show.EndDate)
         </dd>
+         <dd>
+            <P>Paintings in the <q> @Html.DisplayFor(model => model.Show.ShowTitle) </q>  show</P>
+            <table class="table">
+                <tr>
+                    <th>Painting Title</th>
+                    
+                </tr>
+
+                @foreach (var item in Model.ShowPainting)
+                {
+                 <tr>
+                    <td>
+                        <q>@Html.DisplayFor(modelItem => item.PaintingID)</q>
+                    </td>
+                </tr>
+
+
+                }
+</table>
+        </dd>
     </dl>
 </div>
 <div>

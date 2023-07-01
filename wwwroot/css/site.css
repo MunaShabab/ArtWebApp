@@ -68,7 +68,7 @@ nav {
 
     nav li {
         display: inline;
-        margin: 1%;
+        margin: 1% auto;
         padding: 1%;
     }
 
@@ -103,9 +103,9 @@ section {
     color: floralwhite;
 }
 
-    .thumbnail-holder a {
+.thumbnail-holder a {
         text-decoration: none;
-    }
+}
 
 .thumbnail-title {
     color: cornsilk;
@@ -115,9 +115,9 @@ section {
     color: cornsilk;
 }
 
-    .work-detail ul {
+.work-detail ul {
         list-style-type: none;
-    }
+}
 
 main img {
     padding: 1.7%;

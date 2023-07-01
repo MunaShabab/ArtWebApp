@@ -19,7 +19,8 @@ namespace ArtWebApp.Pages.Shows
             _context = context;
         }
 
-      public Show Show { get; set; } = default!; 
+      public Show Show { get; set; } = default!;
+        public IList<ShowPainting> ShowPainting { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -36,6 +37,12 @@ namespace ArtWebApp.Pages.Shows
             else 
             {
                 Show = show;
+                var showPaintings = from e in _context.ShowPainting
+                                    select e;
+
+                showPaintings = showPaintings.Where(s => s.ShowID.Equals(Show.ShowID));
+
+                ShowPainting = await showPaintings.ToListAsync();
             }
             return Page();
         }
